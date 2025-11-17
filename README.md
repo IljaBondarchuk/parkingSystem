@@ -1,4 +1,4 @@
-For proper working, you need to install java 17 on your PC
+For proper working, you need to install java 17 on your PC 
 You can run project in IDE, running ParkingSystemApplication 
 Using terminal in root:
 Windows 
