@@ -1,4 +1,4 @@
-For proper working, you need to install java 17 on your PC 
+**For proper working, you need to install java 17 on your PC **
 
 You can run project in IDE, running ParkingSystemApplication 
 
@@ -13,14 +13,14 @@ chmod +x gradlew
 ./gradlew clean build
 ./gradlew bootRun
 
-Access to Database console 
+**Access to Database console **
 
 http://localhost:8080/h2-console
 
 user test
 no pass
 
-SQL check
+**SQL check**
 
 select * from levels 
 select * from parking_events
@@ -28,11 +28,11 @@ select * from parking_lot
 select * from parking_spots
 select * from vehicles
 
-Changes pricing strategy
+**Changes pricing strategy**
 ParkingEventService in constructor
 
 
-postman requests for import [Parking System.postman_collection.json](https://github.com/user-attachments/files/23591912/Parking.System.postman_collection.json)
+**postman requests for import** [Parking System.postman_collection.json](https://github.com/user-attachments/files/23591912/Parking.System.postman_collection.json)
 
 {
 	"info": {
