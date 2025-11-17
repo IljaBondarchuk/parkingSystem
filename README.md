@@ -1,4 +1,4 @@
-**For proper working, you need to install java 17 on your PC **
+**For proper working, you need to install java 17 on your PC**
 
 You can run project in IDE, running ParkingSystemApplication 
 
@@ -13,7 +13,7 @@ chmod +x gradlew
 ./gradlew clean build
 ./gradlew bootRun
 
-**Access to Database console **
+**Access to Database console**
 
 http://localhost:8080/h2-console
 
