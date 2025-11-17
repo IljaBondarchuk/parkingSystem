@@ -1,20 +1,27 @@
 For proper working, you need to install java 17 on your PC 
+
 You can run project in IDE, running ParkingSystemApplication 
+
 Using terminal in root:
 Windows 
+
 gradlew clean build
 gradlew bootRun
+
 Linux/Mac
 chmod +x gradlew
 ./gradlew clean build
 ./gradlew bootRun
 
 Access to Database console 
+
 http://localhost:8080/h2-console
+
 user test
 no pass
 
 SQL check
+
 select * from levels 
 select * from parking_events
 select * from parking_lot
