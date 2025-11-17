@@ -19,10 +19,6 @@ public interface ParkingLotRepository extends JpaRepository<ParkingLot,Long> {
             "JOIN l.parkingSpotsList ps " +
             "WHERE ps.status = 'AVAILABLE'")
     List<ParkingLot> findParkingLotsWithAvalibleSpots();
-    @Query("SELECT pl FROM ParkingLot pl " +
-            "LEFT JOIN FETCH pl.levelsList l " +
-            "LEFT JOIN FETCH l.parkingSpotsList " +
-            "WHERE pl.ID = :id")
-    Optional<ParkingLot> findByIdWithLevelsAndSpots(@Param("id") Long id);
+
 
 }

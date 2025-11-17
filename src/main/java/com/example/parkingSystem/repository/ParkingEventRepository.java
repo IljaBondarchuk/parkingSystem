@@ -27,18 +27,14 @@ public interface ParkingEventRepository extends JpaRepository<ParkingEvent, Long
             "WHERE pe.parkingSpot.level.parkingLot.ID = :parkingLotId " +
             "AND pe.isActive = true")
     List<ParkingEvent> findActiveEventsByParkingLotId(@Param("parkingLotId") Long parkingLotId);
-    @Query("SELECT COUNT(pe) FROM ParkingEvent pe " +
-            "WHERE pe.parkingSpot.level.parkingLot.ID = :parkingLotId " +
-            "AND pe.isActive = true")
-    long countActiveEventsByParkingLotId(@Param("parkingLotId") Long parkingLotId);
-    @Query("SELECT pe FROM ParkingEvent pe " +
-            "WHERE pe.parkingSpot.ID = :spotId " +
-            "AND pe.isActive = true")
-    Optional<ParkingEvent> findActiveEventBySpotId(@Param("spotId") Long spotId);
     @Query("SELECT COUNT(pe) > 0 FROM ParkingEvent pe " +
             "WHERE pe.vehicle.licensePlate = :licensePlate " +
             "AND pe.isActive = true")
     boolean hasActiveEvent(@Param("licensePlate") String licensePlate);
+    @Query("SELECT pe FROM ParkingEvent pe " +
+            "WHERE pe.vehicle.licensePlate = :licensePlate " +
+            "ORDER BY pe.checkInTime DESC")
+    List<ParkingEvent> findByLicensePlate(@Param("licensePlate") String licensePlate);
 
 
 }

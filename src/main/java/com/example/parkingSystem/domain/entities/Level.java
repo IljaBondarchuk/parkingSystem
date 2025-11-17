@@ -16,7 +16,7 @@ import java.util.List;
 public class Level {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
 @Column(nullable = false)
     private Integer levelNumber;
 

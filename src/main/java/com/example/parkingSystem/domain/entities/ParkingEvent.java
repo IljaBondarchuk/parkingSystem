@@ -10,14 +10,13 @@ import java.time.LocalTime;
 @Entity
 @Table(name = "parking_events")
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 public class ParkingEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
     @Column(nullable = false, unique = true)
     private String ticketNumber;
 
@@ -41,9 +40,6 @@ public class ParkingEvent {
         this.isActive = false;
     }
 
-    public int getDuration(){
-        return Duration.between(checkInTime,checkOutTime).toHoursPart();
-    }
     private String generateTicketNumber(){
         return "TT-" + System.currentTimeMillis() + "-" + (int)(Math.random() * 1000000);
     }

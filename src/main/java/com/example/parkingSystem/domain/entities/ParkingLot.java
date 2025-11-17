@@ -9,14 +9,13 @@ import java.util.List;
 @Entity
 @Table(name = "parking_lot")
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 public class ParkingLot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
     @Column(nullable = false)
  private String name;
 
@@ -28,7 +27,9 @@ public void addLevel(Level level){
     levelsList.add(level);
     level.setParkingLot(this);
 }
-
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean isActive = true;
     public void deleteLevel(Level level){
         levelsList.remove(level);
         level.setParkingLot(null);

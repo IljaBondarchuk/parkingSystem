@@ -15,7 +15,7 @@ import lombok.*;
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
 
     @Pattern(regexp = "^[A-Z]{2}\\d{4}[A-Z]{2}$")
     @Column(nullable = false, unique = true)

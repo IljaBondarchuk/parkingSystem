@@ -16,7 +16,7 @@ import lombok.*;
 public class ParkingSpot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
     @Column(nullable = false)
     private Integer parkingSpotNumber;
 

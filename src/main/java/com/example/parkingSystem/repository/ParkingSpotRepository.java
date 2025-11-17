@@ -12,40 +12,23 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface ParkingSpotRepository extends JpaRepository<ParkingSpot, Long> {
-    List<ParkingSpot> findByLevelID(Long levelId);
-    Optional<ParkingSpot> findByLevelIDAndParkingSpotNumber(Long levelId, Integer parkingSpotNumber);
-    List<ParkingSpot> findByLevelIDAndStatus(Long levelId, ParkingSpotStatus status);
-    List<ParkingSpot> findByLevelIDAndParkingSpotTypeAndStatus(
-            Long levelId,
-            ParkingSpotType parkingSpotType,
-            ParkingSpotStatus status
-    );
-    boolean existsByLevelIDAndParkingSpotNumber(Long levelId, Integer parkingSpotNumber);
+    List<ParkingSpot> findByLevelId(Long levelId);
 
     @Query("SELECT ps FROM ParkingSpot ps " +
-            "WHERE ps.level.parkingLot.ID = :parkingLotId " +
+            "WHERE ps.level.parkingLot.Id = :parkingLotId " +
             "AND ps.status = 'AVAILABLE'")
     List<ParkingSpot> findAvailableSpotsByParkingLotId(@Param("parkingLotId") Long parkingLotId);
-    @Query("SELECT ps FROM ParkingSpot ps " +
-            "WHERE ps.level.parkingLot.ID = :parkingLotId " +
-            "AND ps.parkingSpotType = :spotType " +
-            "AND ps.status = 'AVAILABLE' " +
-            "ORDER BY ps.level.levelNumber ASC, ps.parkingSpotNumber ASC")
-    List<ParkingSpot> findAvailableSpotsByTypeInParkingLot(
-            @Param("parkingLotId") Long parkingLotId,
-            @Param("spotType") ParkingSpotType spotType
-    );
-    @Query("SELECT ps FROM ParkingSpot ps WHERE ps.level.parkingLot.ID = :parkingLotId")
-    List<ParkingSpot> findByParkingLotId(@Param("parkingLotId") Long parkingLotId);
     @Query("SELECT COUNT(ps) FROM ParkingSpot ps " +
-            "WHERE ps.level.parkingLot.ID = :parkingLotId " +
+            "WHERE ps.level.parkingLot.Id = :parkingLotId " +
             "AND ps.status = 'AVAILABLE'")
     long countAvailableSpots(@Param("parkingLotId") Long parkingLotId);
-    @Query("SELECT COUNT(ps) FROM ParkingSpot ps " +
-            "WHERE ps.level.parkingLot.ID = :parkingLotId " +
+    @Query("SELECT ps FROM ParkingSpot ps " +
+            "WHERE ps.level.parkingLot.Id = :parkingLotId " +
             "AND ps.parkingSpotType = :spotType " +
-            "AND ps.status = 'AVAILABLE'")
-    long countAvailableSpotsByType(
+            "AND ps.status = 'AVAILABLE' " +
+            "ORDER BY ps.level.levelNumber ASC, ps.parkingSpotNumber ASC " +
+            "LIMIT 1")
+    Optional<ParkingSpot> findFirstAvailableSpotByType(
             @Param("parkingLotId") Long parkingLotId,
             @Param("spotType") ParkingSpotType spotType
     );
